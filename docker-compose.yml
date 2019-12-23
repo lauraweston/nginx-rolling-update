@@ -3,21 +3,31 @@ services:
   load_balancer:
     image: nginx:1.17.6-alpine
     ports:
-      - "5000:80"
+      - "11638:11638"
+      - "11636:11636"
     volumes:
       - ./load_balancer/nginx.conf:/etc/nginx/nginx.conf
 
-  app_1:
+  nemo_a:
     image: nginx:1.17.6-alpine
     # Mapping port so you can visit directly in browser. This is not used by NGINX proxying and can be removed
     # Docker create app_1 DNS entry in internal network for cross-container communication
     ports:
       - "8080:80"
     volumes:
-      - ./app1:/usr/share/nginx/html
-  app_2:
+      - ./apps/nemo_a.html:/usr/share/nginx/html/index.html
+  nemo_b:
     image: nginx:1.17.6-alpine
     ports:
       - "8081:80"
     volumes:
-      - ./app2:/usr/share/nginx/html
+      - ./apps/nemo_b.html:/usr/share/nginx/html/index.html
+
+  grandma_a:
+    image: nginx:1.17.6-alpine
+    volumes:
+      - ./apps/grandma_a.html:/usr/share/nginx/html/index.html
+  grandma_b:
+    image: nginx:1.17.6-alpine
+    volumes:
+      - ./apps/grandma_b.html:/usr/share/nginx/html/index.html
