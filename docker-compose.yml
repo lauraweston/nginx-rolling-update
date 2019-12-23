@@ -15,19 +15,19 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./apps/nemo_a.html:/usr/share/nginx/html/index.html
+      - ./apps/nemo_a.html:/usr/share/nginx/html/index.html:ro
   nemo_b:
     image: nginx:1.17.6-alpine
     ports:
       - "8081:80"
     volumes:
-      - ./apps/nemo_b.html:/usr/share/nginx/html/index.html
+      - ./apps/nemo_b.html:/usr/share/nginx/html/index.html:ro
 
   grandma_a:
     image: nginx:1.17.6-alpine
     volumes:
-      - ./apps/grandma_a.html:/usr/share/nginx/html/index.html
+      - ./apps/grandma_a.html:/usr/share/nginx/html/index.html:ro
   grandma_b:
     image: nginx:1.17.6-alpine
     volumes:
-      - ./apps/grandma_b.html:/usr/share/nginx/html/index.html
+      - ./apps/grandma_b.html:/usr/share/nginx/html/index.html:ro
