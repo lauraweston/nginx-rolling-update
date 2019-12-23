@@ -2,7 +2,8 @@ version: '3'
 services:
   load_balancer:
     build: .
-    tty: true
+    volumes:
+      - ./load_balancer:/etc/nginx
     ports:
       - "11638:11638"
       - "11636:11636"
