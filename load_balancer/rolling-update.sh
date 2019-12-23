@@ -31,5 +31,5 @@ else
     updateConfigFile "$A_UP" "$B_UP"
 fi
 
-echo "Checking new config and reloading "
+echo "Checking new config and reloading"
 nginx -t && nginx -s reload
