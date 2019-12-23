@@ -1,0 +1,14 @@
+version: '3'
+services:
+  app_1:
+    image: nginx:1.17.6-alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./app1:/usr/share/nginx/html
+  app_2:
+    image: nginx:1.17.6-alpine
+    ports:
+      - "8081:80"
+    volumes:
+      - ./app2:/usr/share/nginx/html
