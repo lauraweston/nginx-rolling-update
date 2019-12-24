@@ -1,6 +1,6 @@
 # NGINX Rolling Update Demo
 
-1. Clone the git repo: `git clone repo`
+**Requirements:** Clone git repo and install Docker.
 
 1. Start NGINX and the demo apps in Docker: `docker-compose up --build`  
 This will start 5 docker containers: the NGINX load balancer and 4 sample apps (on different ports), as configured in docker-compose.yml.  
