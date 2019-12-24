@@ -11,25 +11,24 @@ fi
 
 echo "Route config is $ROUTE_CONFIG"
 
-CONFIG_FILE="$CURRENT_DIR/nginx.conf"
-echo "Config file is $CONFIG_FILE"
-
 A_UP="s/_a down;/_a;/g"
 A_DOWN="s/_a;/_a down;/g"
 B_UP="s/_b down;/_b;/g"
 B_DOWN="s/_b;/_b down;/g"
 
-function updateConfigFile {
+function updateNginxConfigFile {
+    CONFIG_FILE="$CURRENT_DIR/nginx.conf"
+    echo "Updating $CONFIG_FILE"
     sed -i.bak -e "$1" -e "$2" $CONFIG_FILE
 }
 
 if [ "$ROUTE_CONFIG" == "a" ]; then
-    updateConfigFile "$A_UP" "$B_DOWN"
+    updateNginxConfigFile "$A_UP" "$B_DOWN"
 elif [ "$ROUTE_CONFIG" == "b" ]; then
-    updateConfigFile "$A_DOWN" "$B_UP"
+    updateNginxConfigFile "$A_DOWN" "$B_UP"
 else
-    updateConfigFile "$A_UP" "$B_UP"
+    updateNginxConfigFile "$A_UP" "$B_UP"
 fi
 
-echo "Checking new config and reloading"
+echo "Checking new nginx config and reloading"
 nginx -t && nginx -s reload
