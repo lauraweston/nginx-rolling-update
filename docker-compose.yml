@@ -11,7 +11,7 @@ services:
   nemo_a:
     image: nginx:1.17.6
     # Mapping port so you can visit directly in browser. This is not used by NGINX proxying and can be removed
-    # Docker create app_1 DNS entry in internal network for cross-container communication
+    # Docker creates a 'nemo_a' DNS entry in internal network for cross-container communication
     ports:
       - "8080:80"
     volumes:
@@ -25,9 +25,13 @@ services:
 
   grandma_a:
     image: nginx:1.17.6-alpine
+    ports:
+      - "8082:80"
     volumes:
       - ./apps/grandma_a.html:/usr/share/nginx/html/index.html:ro
   grandma_b:
     image: nginx:1.17.6-alpine
+    ports:
+      - "8083:80"
     volumes:
       - ./apps/grandma_b.html:/usr/share/nginx/html/index.html:ro
