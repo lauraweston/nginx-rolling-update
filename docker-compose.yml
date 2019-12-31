@@ -8,30 +8,30 @@ services:
       - "11638:11638"
       - "11636:11636"
 
-  app_1a:
+  app1_a:
     image: nginx:1.17.6
     # Mapping port so you can visit directly in browser. This is not used by NGINX proxying and can be removed
-    # Docker creates a 'app_1a' DNS entry in internal network for cross-container communication
+    # Docker creates a 'app1_a' DNS entry in internal network for cross-container communication
     ports:
       - "8080:80"
     volumes:
-      - ./apps/app_1a.html:/usr/share/nginx/html/index.html:ro
-  app_1b:
+      - ./apps/app1_a.html:/usr/share/nginx/html/index.html:ro
+  app1_b:
     image: nginx:1.17.6-alpine
     ports:
       - "8081:80"
     volumes:
-      - ./apps/app_1b.html:/usr/share/nginx/html/index.html:ro
+      - ./apps/app1_b.html:/usr/share/nginx/html/index.html:ro
 
-  app_2a:
+  app2_a:
     image: nginx:1.17.6-alpine
     ports:
       - "8082:80"
     volumes:
-      - ./apps/app_2a.html:/usr/share/nginx/html/index.html:ro
-  app_2b:
+      - ./apps/app2_a.html:/usr/share/nginx/html/index.html:ro
+  app2_b:
     image: nginx:1.17.6-alpine
     ports:
       - "8083:80"
     volumes:
-      - ./apps/app_2b.html:/usr/share/nginx/html/index.html:ro
+      - ./apps/app2_b.html:/usr/share/nginx/html/index.html:ro

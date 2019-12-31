@@ -7,7 +7,7 @@ This will start 5 docker containers: the NGINX load balancer and 4 sample apps (
 `--build` rebuilds the docker containers so as to pick up any changes made to the `Dockerfile`, if any.
 
 1. NGINX configuration:  
-The `nginx.conf` defines the configuration for NGINX and is used to configure server groups and the load-balancing algorithm. The initial configuration in this file creates two server groups, one for the two app_1 instances (on port 11638) and one for the two app_2 instances (on port 11636).  
+The `nginx.conf` defines the configuration for NGINX and is used to configure server groups and the load-balancing algorithm. The initial configuration in this file creates two server groups, one for the two app1 instances (on port 11638) and one for the two app2 instances (on port 11636).  
 Because no load‑balancing algorithm is specified in the upstream block, NGINX uses the default algorithm, Round Robin, to route traffic between the two servers in each group.  
 
 1. Go to the apps at `http://localhost:11638/` and `http://localhost:11636/`. Refresh the page multiple times and you will see each app switches between server A and server B.
